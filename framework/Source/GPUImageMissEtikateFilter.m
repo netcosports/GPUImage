@@ -1,6 +1,7 @@
 #import "GPUImageMissEtikateFilter.h"
 #import "GPUImagePicture.h"
 #import "GPUImageLookupFilter.h"
+#import "GPUBundleSettings.h"
 
 @implementation GPUImageMissEtikateFilter
 
@@ -12,7 +13,11 @@
     }
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
-    UIImage *image = [UIImage imageNamed:@"lookup_miss_etikate.png"];
+    #if __has_include(<UIKit/UITraitCollection.h>)
+        UIImage *image = [UIImage imageNamed:@"lookup_miss_etikate.png" inBundle:[GPUBundleSettings sharedInstance].bundle compatibleWithTraitCollection:nil];
+    #else
+        UIImage *image = [UIImage imageNamed:@"lookup_miss_etikate.png"];
+    #endif
 #else
     NSImage *image = [NSImage imageNamed:@"lookup_miss_etikate.png"];
 #endif

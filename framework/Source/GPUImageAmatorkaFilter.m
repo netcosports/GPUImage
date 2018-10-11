@@ -14,7 +14,8 @@
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
     #if __has_include(<UIKit/UITraitCollection.h>)
-        UIImage *image = [UIImage imageNamed:@"lookup_amatorka.png" inBundle:[GPUBundleSettings sharedInstance].bundle compatibleWithTraitCollection:nil];
+        NSBundle *bundle = [NSBundle bundleForClass:[GPUImageAmatorkaFilter class]];
+        UIImage *image = [UIImage imageNamed:@"lookup_amatorka.png" inBundle:bundle compatibleWithTraitCollection:nil];
     #else
         UIImage *image = [UIImage imageNamed:@"lookup_amatorka.png"];
     #endif

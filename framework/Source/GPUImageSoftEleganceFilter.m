@@ -16,8 +16,9 @@
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
     #if __has_include(<UIKit/UITraitCollection.h>)
-        UIImage *image1 = [UIImage imageNamed:@"lookup_soft_elegance_1.png" inBundle:[GPUBundleSettings sharedInstance].bundle compatibleWithTraitCollection:nil];
-        UIImage *image2 = [UIImage imageNamed:@"lookup_soft_elegance_2.png" inBundle:[GPUBundleSettings sharedInstance].bundle compatibleWithTraitCollection:nil];
+        NSBundle *bundle = [NSBundle bundleForClass:[GPUImageSoftEleganceFilter class]];
+        UIImage *image1 = [UIImage imageNamed:@"lookup_soft_elegance_1.png" inBundle:bundle compatibleWithTraitCollection:nil];
+        UIImage *image2 = [UIImage imageNamed:@"lookup_soft_elegance_2.png" inBundle:bundle compatibleWithTraitCollection:nil];
     #else
         UIImage *image1 = [UIImage imageNamed:@"lookup_soft_elegance_1.png"];
         UIImage *image2 = [UIImage imageNamed:@"lookup_soft_elegance_2.png"];
